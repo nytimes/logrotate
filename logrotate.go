@@ -9,6 +9,8 @@ import (
 	"time"
 )
 
+// File wraps an *os.File and listens for a 'SIGHUP' signal from logrotated
+// so it can reopen the new file.
 type File struct {
 	*os.File
 	me     sync.Mutex
@@ -16,6 +18,8 @@ type File struct {
 	sighup chan os.Signal
 }
 
+// NewFile creates a File pointer and kicks off the goroutine listening for
+// SIGHUP signals.
 func NewFile(path string) (*File, error) {
 
 	lr := &File{
@@ -51,12 +55,16 @@ func (lr *File) reopen() (err error) {
 	return
 }
 
+// Write will write to the underlying file. It uses a sync.Mutex to ensure
+// uninterrupted writes during logrotates.
 func (lr *File) Write(b []byte) (int, error) {
 	lr.me.Lock()
 	defer lr.me.Unlock()
 	return lr.File.Write(b)
 }
 
+// Close will stop the goroutine listening for SIGHUP signals and then close
+// the underlying os.File.
 func (lr *File) Close() error {
 	lr.me.Lock()
 	defer lr.me.Unlock()
