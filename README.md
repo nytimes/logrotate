@@ -1,5 +1,7 @@
 #logrotate file
 
+ [![GoDoc](https://godoc.org/github.com/NYTimes/logrotate?status.svg)](https://godoc.org/github.com/nytimes/logrotate) [![Build Status](https://travis-ci.org/NYTimes/logrotate.svg?branch=master)](https://travis-ci.org/NYTimes/logrotate)
+
 `logrotated` can be configured to send a `SIGHUP` signal to a process after rotating it's logs.  This library reopens the underlying `os.File` when a `SIGHUP` is received by the app.  
 
 ###Example
