@@ -2,3 +2,8 @@ language: go
 go:
   - 1.x
   - tip
+install: true
+script: go test
+env:
+  global:
+    - GO111MODULE=on
