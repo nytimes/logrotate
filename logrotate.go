@@ -1,4 +1,4 @@
-package logrotate // import "github.com/NYTimes/logrotate"
+package logrotate // import "github.com/nytimes/logrotate"
 
 import (
 	"fmt"

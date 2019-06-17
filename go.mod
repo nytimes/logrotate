@@ -1,3 +1,3 @@
-module github.com/NYTimes/logrotate
+module github.com/nytimes/logrotate
 
 go 1.12
