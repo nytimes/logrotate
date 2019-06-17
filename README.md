@@ -16,3 +16,9 @@ This is will enable all log calls to output to the log file without interruption
 
 
 ref: [http://linux.die.net/man/8/logrotate](http://linux.die.net/man/8/logrotate)
+
+
+### Install
+Notice the capitalization!
+
+`go get github.com/NYTimes/logrotate`
